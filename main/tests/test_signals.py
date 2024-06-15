@@ -14,3 +14,9 @@ class TestSignal(TestCase):
                 image.save()
         self.assertGreaterEqual(len(cm.output), 1)
         image.refresh_from_db()
+        
+        with open("main/fixtures/the-cathedral-the-bazaar.thumb.jpg", "rb",) as f:
+            expected_content = f.read()
+            assert image.thumbnail.read() == expected_content
+        image.thumbnail.delete(save=False)
+        image.image.delete(save=False)
