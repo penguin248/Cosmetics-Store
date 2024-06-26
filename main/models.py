@@ -16,7 +16,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=48)
     active = models.BooleanField(default=True)
     
-    date_updated = models.DateTimeField(auto_now=True)
+    
     objects = ActiveManager()
     objects = ProductTagManager()
     def __str__(self):
